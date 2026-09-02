@@ -282,26 +282,7 @@
                                 </button>
                             </motion.div>
 
-                            <motion.div
-                                initial={{ filter: 'blur(10px)', opacity: 0, y: 20 }}
-                                animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
-                                transition={{ ease: "easeOut", duration: 0.8, delay: 1.3 }}
-                                className="flex flex-col items-center gap-4 mt-8"
-                            >
-                                <div className="flex items-stretch gap-4 flex-col sm:flex-row">
-                                    <div className="liquid-glass p-6 w-[220px] rounded-[1.25rem] flex flex-col justify-center text-center">
-                                        <div className="font-heading italic text-white text-4xl tracking-[-1px] leading-none">Hoàng Vũ</div>
-                                    </div>
-                                    <div className="liquid-glass p-6 w-[220px] rounded-[1.25rem] flex flex-col justify-center text-center">
-                                        <div className="font-heading italic text-white text-4xl tracking-[-1px] leading-none">Bích Ngọc</div>
-                                    </div>
-                                </div>
-                                <div className="liquid-glass px-6 py-3 rounded-full flex items-center justify-center text-center">
-                                    <div className="text-sm text-white/90 font-body font-light">
-                                        Your reply would make my day. Looking forward to hearing from you
-                                    </div>
-                                </div>
-                            </motion.div>
+
                         </div>
 
 
@@ -312,9 +293,9 @@
 
         function CapabilitiesSection() {
             const cards = [
-                { title: "1. Tớ sang đón nhaaaa", location: "Cầu Diễn", time: "18h" },
-                { title: "2. Đi xem phim ma", location: "Aeon Xuân Thủy", time: "18h30" },
-                { title: "3. Tớ dẫn cậu đi chơi Ps5", location: "Tô Hiệu", time: "23h" }
+                { title: "1. WannaTe", location: "Cầu Giấy", time: "19h 06/09/2026", link: "https://vt.tiktok.com/ZSq1FnUdy/" },
+                { title: "2. Đi ăn đêmmm, recommend ăn ốc" },
+                { title: "3. NoxJoy", location: "Cầu Giấy", time: "23h", link: "https://www.tiktok.com/@noxjoystation/video/7630846257652616469?_r=1&_t=ZS-99OvXI5LdHo" }
             ];
 
             return (
@@ -326,40 +307,41 @@
 
                     <div className="relative z-10 px-8 md:px-16 lg:px-20 pt-24 pb-10 flex flex-col min-h-screen">
                         <div className="mb-auto">
-                            <div className="text-sm font-body text-white/80 mb-6">Hvu & Ngọc</div>
+
                             <h2 className="font-heading italic text-white text-6xl md:text-7xl lg:text-[6rem] leading-[0.9] tracking-[-3px]">
-                                Kế hoạch của tớ !!!
+                                Kế hoạch của anh !!!
                             </h2>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
                             {cards.map((card, idx) => (
-                                <div key={idx} className="liquid-glass rounded-[1.25rem] p-8 min-h-[280px] flex flex-col justify-between items-center text-center">
+                                <div 
+                                    key={idx} 
+                                    className={`liquid-glass rounded-[1.25rem] p-8 min-h-[280px] flex flex-col justify-between items-center text-center ${card.link ? 'cursor-pointer hover:scale-[1.02] transition-transform' : ''}`}
+                                    onClick={() => card.link && window.open(card.link, '_blank')}
+                                >
                                     <h3 className="font-heading italic text-white text-3xl md:text-4xl tracking-[-1px] leading-tight my-auto">
                                         {card.title}
                                     </h3>
-                                    <div className="flex flex-col gap-2 w-full mt-6">
-                                        <div className="liquid-glass rounded-full px-4 py-2 text-sm text-white/90 font-body w-full flex items-center justify-center">
-                                            {card.location}
+                                    {(card.location || card.time) && (
+                                        <div className="flex flex-col gap-2 w-full mt-6">
+                                            {card.location && (
+                                                <div className="liquid-glass rounded-full px-4 py-2 text-sm text-white/90 font-body w-full flex items-center justify-center">
+                                                    {card.location}
+                                                </div>
+                                            )}
+                                            {card.time && (
+                                                <div className="liquid-glass rounded-full px-4 py-2 text-sm text-white/90 font-body w-full flex items-center justify-center">
+                                                    {card.time}
+                                                </div>
+                                            )}
                                         </div>
-                                        <div className="liquid-glass rounded-full px-4 py-2 text-sm text-white/90 font-body w-full flex items-center justify-center">
-                                            {card.time}
-                                        </div>
-                                    </div>
+                                    )}
                                 </div>
                             ))}
                         </div>
 
-                        <div className="mt-12 flex justify-center pb-12">
-                            <motion.div
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 1, duration: 0.8 }}
-                                className="liquid-glass-strong rounded-full px-8 py-4 text-white font-body text-base text-center"
-                            >
-                                Mình cũng có thể ăn sau khi xem phim luôn
-                            </motion.div>
-                        </div>
+
                     </div>
                 </section>
             );
